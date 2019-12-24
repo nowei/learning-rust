@@ -24,6 +24,8 @@ where T: PartialOrd + Copy {
     return largest;
 }
 
+use std::fmt::Display;
+
 #[derive(Debug)]
 struct Point<T> {
     x: T,
@@ -33,6 +35,23 @@ struct Point<T> {
 impl<T> Point<T> {
     fn x(&self) -> &T {
         &self.x
+    }
+
+    fn new(x: T, y: T) -> Self {
+        Self {
+            x, 
+            y,
+        }
+    }
+}
+
+impl<T: Display + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("{:?}", self.x);
+        } else {
+            println!("{:?}", self.y);
+        }
     }
 }
 
